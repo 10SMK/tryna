@@ -1,139 +1,83 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Soal Pilihan Ganda Persamaan Kuadrat</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 2rem auto;
-      background: #f9f9f9;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #004080;
-      margin-bottom: 2rem;
-    }
-    .soal-container {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    .soal-text {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    .pilihan {
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-    }
-    button {
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-      margin-top: 1rem;
-    }
-    button:hover {
-      background-color: #004080;
-    }
-    .pembahasan {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      background-color: #e6f0ff;
-      border-left: 5px solid #0077cc;
-      font-style: italic;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profil Dosen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .dosen-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .dosen-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 260px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .dosen-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dosen-card img {
+            width: 140px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+        }
+        .nama {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #222;
+            margin-bottom: 8px;
+        }
+        .nip {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Soal Pilihan Ganda Persamaan Kuadrat</h1>
+    <h1>Profil Dosen</h1>
+    <div class="dosen-container">
+        <!-- Profil Edy Wihardjo -->
+        <div class="dosen-card">
+            <img src="foto_edy_wihardjo.jpg" alt="Foto Edy Wihardjo" />
+            <div class="nama">Edy Wihardjo, S.Pd., M.Pd., M.CE.</div>
+            <div class="nip">NIP: 197001081999031001</div>
+        </div>
 
-  <div class="soal-container">
-    <div id="soal-text" class="soal-text"></div>
-    <form id="form-soal">
-      <!-- Pilihan jawaban akan di-generate di sini -->
-    </form>
-    <button id="btn-submit">Cek Jawaban</button>
-    <div id="pembahasan" class="pembahasan"></div>
-  </div>
+        <!-- Profil Dr. Erfan Yudianto -->
+        <div class="dosen-card">
+            <img src="foto_erfan_yudianto.jpg" alt="Foto Dr. Erfan Yudianto" />
+            <div class="nama">Dr. Erfan Yudianto, S.Pd., M.Pd.</div>
+            <div class="nip">NIP: 198503162015041001</div>
+        </div>
 
-  <script>
-    // Data soal dengan pilihan dan pembahasan
-    const soalData = {
-      soal: "Selesaikan persamaan kuadrat: x² - 5x + 6 = 0. Berapakah akar-akarnya?",
-      pilihan: [
-        { id: "a", text: "x = 1 dan x = 6" },
-        { id: "b", text: "x = 2 dan x = 3" },
-        { id: "c", text: "x = -2 dan x = -3" },
-        { id: "d", text: "x = 0 dan x = 5" }
-      ],
-      jawabanBenar: "b",
-      pembahasan: "Persamaan kuadrat x² - 5x + 6 = 0 dapat difaktorkan menjadi (x - 2)(x - 3) = 0, sehingga akar-akarnya adalah x = 2 dan x = 3."
-    };
-
-    const soalTextEl = document.getElementById("soal-text");
-    const formSoal = document.getElementById("form-soal");
-    const btnSubmit = document.getElementById("btn-submit");
-    const pembahasanEl = document.getElementById("pembahasan");
-
-    // Tampilkan soal dan pilihan jawaban
-    function tampilkanSoal() {
-      soalTextEl.textContent = soalData.soal;
-      formSoal.innerHTML = ""; // kosongkan dulu
-
-      soalData.pilihan.forEach(pilihan => {
-        const label = document.createElement("label");
-        label.className = "pilihan";
-        label.htmlFor = pilihan.id;
-
-        const radio = document.createElement("input");
-        radio.type = "radio";
-        radio.name = "jawaban";
-        radio.id = pilihan.id;
-        radio.value = pilihan.id;
-
-        label.appendChild(radio);
-        label.appendChild(document.createTextNode(" " + pilihan.text));
-
-        formSoal.appendChild(label);
-        formSoal.appendChild(document.createElement("br"));
-      });
-    }
-
-    // Cek jawaban dan tampilkan pembahasan
-    btnSubmit.addEventListener("click", () => {
-      const pilihanTerpilih = document.querySelector('input[name="jawaban"]:checked');
-      if (!pilihanTerpilih) {
-        alert("Silakan pilih jawaban terlebih dahulu!");
-        return;
-      }
-
-      if (pilihanTerpilih.value === soalData.jawabanBenar) {
-        pembahasanEl.style.color = "#006600"; // hijau
-        pembahasanEl.textContent = "Jawaban benar! " + soalData.pembahasan;
-      } else {
-        pembahasanEl.style.color = "#cc0000"; // merah
-        pembahasanEl.textContent = "Jawaban salah. " + soalData.pembahasan;
-      }
-      pembahasanEl.style.display = "block";
-    });
-
-    // Inisialisasi soal saat halaman dimuat
-    tampilkanSoal();
-  </script>
+        <!-- Profil Lela Nur Safrida -->
+        <div class="dosen-card">
+            <img src="foto_lela_nur_safrida.jpg" alt="Foto Lela Nur Safrida" />
+            <div class="nama">Lela Nur Safrida, S.Pd., M.Pd.</div>
+            <div class="nip">NIP: 199205122022032009</div>
+        </div>
+    </div>
 </body>
-  <a href="ppt.html">Buka Presentasi Persamaan Kuadrat</a>
 </html>
