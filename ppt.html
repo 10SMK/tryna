@@ -3,37 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Persamaan Kuadrat - Matematika SMK Kelas 10</title>
+  <title>Persamaan Kuadrat - Presentasi</title>
+
+  <!-- Konfigurasi MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      color: #222;
     }
     .slide {
       max-width: 900px;
-      margin: 40px auto;
+      margin: 30px auto;
       background: white;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       padding: 30px 40px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
+      min-height: 400px;
     }
     h1, h2 {
       color: #2c3e50;
+      margin-bottom: 15px;
     }
-    p {
+    p, ul {
       font-size: 18px;
-      line-height: 1.5;
+      line-height: 1.6;
       color: #34495e;
     }
     ul {
-      font-size: 18px;
-      color: #34495e;
+      padding-left: 20px;
     }
     .navigation {
       text-align: center;
-      margin: 30px 0;
+      margin: 25px 0;
     }
     button {
       background-color: #2980b9;
@@ -44,17 +61,21 @@
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:disabled {
       background-color: #95a5a6;
       cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      background-color: #1c5980;
     }
   </style>
 </head>
 <body>
 
 <div class="slide" id="slide-container">
-  <!-- Slide content will be injected here -->
+  <!-- Konten slide akan dimasukkan di sini -->
 </div>
 
 <div class="navigation">
@@ -67,98 +88,158 @@
     {
       title: "Persamaan Kuadrat",
       content: `
-        <p>Persamaan kuadrat adalah persamaan yang variabelnya berpangkat tertinggi 2.</p>
-        <p>Bentuk umum persamaan kuadrat:</p>
-        <p><strong>ax² + bx + c = 0</strong>, dengan a ≠ 0</p>
+        <p>Standar Kompetensi dan Kompetensi Dasar:</p>
+        <ul>
+          <li>Memecahkan masalah yang berkaitan dengan fungsi, persamaan dan pertidaksamaan kuadrat.</li>
+          <li>Menggunakan sifat dan aturan tentang persamaan dan pertidaksamaan kuadrat.</li>
+        </ul>
       `
     },
     {
-      title: "Akar Persamaan Kuadrat",
+      title: "Persamaan dan Pertidaksamaan Kuadrat",
       content: `
-        <p>Akar persamaan kuadrat adalah nilai x yang membuat persamaan bernilai 0.</p>
-        <p>Jenis akar ditentukan oleh diskriminan D:</p>
-        <ul>
-          <li>D = b² - 4ac</li>
-          <li>Jika D > 0, akar real dan berbeda</li>
-          <li>Jika D = 0, akar real dan sama</li>
-          <li>Jika D < 0, akar tidak real (kompleks)</li>
-        </ul>
+        <p>Persamaan kuadrat adalah persamaan yang memiliki bentuk umum:</p>
+        <p><strong>$$ax^2 + bx + c = 0, \\quad a \\neq 0$$</strong></p>
+        <p>Pertidaksamaan kuadrat adalah pertidaksamaan yang bentuknya mirip persamaan kuadrat.</p>
       `
     },
     {
       title: "Metode Penyelesaian Persamaan Kuadrat",
       content: `
-        <p>Beberapa metode penyelesaian:</p>
+        <p>Metode penyelesaian persamaan kuadrat:</p>
+        <ol>
+          <li>Memfaktorkan</li>
+          <li>Melengkapkan kuadrat sempurna</li>
+          <li>Rumus kuadrat (Rumus ABC)</li>
+        </ol>
+      `
+    },
+    {
+      title: "Contoh: Memfaktorkan",
+      content: `
+        <p>Selesaikan persamaan:</p>
+        <p><strong>$$x^2 - 2x - 8 = 0$$</strong></p>
+        <p>Faktorkan:</p>
+        <p><strong>$$ (x - 4)(x + 2) = 0 $$</strong></p>
+        <p>Maka akar-akarnya:</p>
+        <p><strong>$$ x = 4 \\quad \\text{atau} \\quad x = -2 $$</strong></p>
+      `
+    },
+    {
+      title: "Contoh: Melengkapkan Kuadrat",
+      content: `
+        <p>Selesaikan persamaan:</p>
+        <p><strong>$$x^2 - 2x - 8 = 0$$</strong></p>
+        <p>Langkah-langkah:</p>
         <ul>
-          <li>Faktorisasi</li>
-          <li>Melengkapkan Kuadrat Sempurna</li>
-          <li>Rumus Kuadrat (Rumus ABC)</li>
+          <li>$$x^2 - 2x = 8$$</li>
+          <li>$$x^2 - 2x + 1 = 8 + 1$$</li>
+          <li>$$ (x - 1)^2 = 9 $$</li>
+          <li>$$ x - 1 = \\pm 3 $$</li>
+          <li>$$ x = 1 \\pm 3 $$</li>
+          <li>Jadi, $$x = 4$$ atau $$x = -2$$</li>
         </ul>
       `
     },
     {
-      title: "Rumus Kuadrat (Rumus ABC)",
+      title: "Rumus Kuadrat",
       content: `
-        <p>Rumus untuk mencari akar persamaan kuadrat:</p>
-        <p><strong>x = (-b ± √(b² - 4ac)) / 2a</strong></p>
+        <p>Rumus untuk menyelesaikan persamaan kuadrat:</p>
+        <p><strong>$$ x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} $$</strong></p>
       `
     },
     {
-      title: "Contoh Soal",
+      title: "Contoh: Menggunakan Rumus Kuadrat",
       content: `
-        <p>Selesaikan persamaan kuadrat berikut:</p>
-        <p><strong>2x² - 4x - 6 = 0</strong></p>
-        <p><em>Penyelesaian:</em></p>
+        <p>Selesaikan persamaan:</p>
+        <p><strong>$$x^2 - 2x - 8 = 0$$</strong></p>
+        <p>Diketahui: $$a=1, b=-2, c=-8$$</p>
+        <p>Hitung diskriminan:</p>
+        <p><strong>$$D = b^2 - 4ac = (-2)^2 - 4(1)(-8) = 4 + 32 = 36$$</strong></p>
+        <p>Hitung akar-akar:</p>
+        <p><strong>$$x = \\frac{-(-2) \\pm \\sqrt{36}}{2(1)} = \\frac{2 \\pm 6}{2}$$</strong></p>
         <ul>
-          <li>a = 2, b = -4, c = -6</li>
-          <li>D = (-4)² - 4(2)(-6) = 16 + 48 = 64</li>
-          <li>x = [4 ± √64] / 4 = (4 ± 8) / 4</li>
-          <li>x₁ = (4 + 8)/4 = 12/4 = 3</li>
-          <li>x₂ = (4 - 8)/4 = -4/4 = -1</li>
+          <li>$$x_1 = \\frac{2 + 6}{2} = 4$$</li>
+          <li>$$x_2 = \\frac{2 - 6}{2} = -2$$</li>
         </ul>
       `
     },
     {
-      title: "Fungsi Kuadrat",
+      title: "Diskriminan dan Jenis Akar",
       content: `
-        <p>Fungsi kuadrat adalah fungsi dengan bentuk:</p>
-        <p><strong>f(x) = ax² + bx + c</strong></p>
-        <p>Grafik fungsi kuadrat berbentuk parabola.</p>
-      `
-    },
-    {
-      title: "Sumbu Simetri dan Nilai Optimum",
-      content: `
-        <p>Sumbu simetri parabola:</p>
-        <p><strong>x = -b / 2a</strong></p>
-        <p>Nilai optimum (maksimum/minimum) diperoleh dengan substitusi x pada fungsi.</p>
-      `
-    },
-    {
-      title: "Kesimpulan",
-      content: `
+        <p>Diskriminan:</p>
+        <p><strong>$$D = b^2 - 4ac$$</strong></p>
+        <p>Jenis akar berdasarkan nilai diskriminan:</p>
         <ul>
-          <li>Persamaan kuadrat memiliki bentuk umum ax² + bx + c = 0</li>
-          <li>Diskriminan menentukan jenis akar</li>
-          <li>Metode penyelesaian: faktorisasi, kuadrat sempurna, rumus kuadrat</li>
-          <li>Fungsi kuadrat grafiknya parabola dengan sumbu simetri</li>
+          <li>$$D > 0$$ : Dua akar real dan berbeda</li>
+          <li>$$D = 0$$ : Dua akar real dan sama</li>
+          <li>$$D < 0$$ : Dua akar kompleks (imajiner)</li>
         </ul>
       `
+    },
+    {
+      title: "Pertidaksamaan Kuadrat",
+      content: `
+        <p>Pertidaksamaan kuadrat dapat diselesaikan dengan metode garis bilangan dan grafik.</p>
+        <p>Contoh:</p>
+        <p><strong>$$x^2 - 2x - 8 \\geq 0$$</strong></p>
+        <p>Faktorkan:</p>
+        <p><strong>$$ (x - 4)(x + 2) \\geq 0 $$</strong></p>
+        <p>Nilai interval solusi:</p>
+        <p><strong>$$x \\leq -2 \\quad \\text{atau} \\quad x \\geq 4$$</strong></p>
+      `
+    },
+    {
+      title: "Jumlah dan Hasil Kali Akar",
+      content: `
+        <p>Jika $$x_1$$ dan $$x_2$$ adalah akar-akar persamaan kuadrat $$ax^2 + bx + c = 0$$, maka:</p>
+        <ul>
+          <li>Jumlah akar: $$x_1 + x_2 = -\\frac{b}{a}$$</li>
+          <li>Hasil kali akar: $$x_1 \\cdot x_2 = \\frac{c}{a}$$</li>
+        </ul>
+      `
+    },
+    {
+      title: "Latihan Soal",
+      content: `
+        <p>Jika salah satu akar persamaan kuadrat $$x^2 - 3x - 2p = 0$$ tiga lebih besar dari salah satu akar persamaan $$x^2 - 3x + p = 0$$, maka bilangan asli $$p$$ sama dengan ...</p>
+        <p><em>(Soal ini bisa didiskusikan lebih lanjut)</em></p>
+      `
+    },
+    {
+      title: "Referensi",
+      content: `
+        <ul>
+          <li>Tim Penyusun (2008). Matematika Untuk SMA / MA. Klaten: PT Intan Pariwara.</li>
+          <li>Juliah (2008). Persiapan Ujian Nasional Matematika. Bandung: Grafindo Media Pratama.</li>
+          <li>Simangunsong, W. (1997). Matematika Dasar.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Selamat Belajar dan Semoga Sukses!",
+      content: `<p>Terima kasih telah mengikuti presentasi ini.</p>`
     }
   ];
 
   let currentSlide = 0;
 
   function showSlide(index) {
-    const slideContainer = document.getElementById('slide-container');
+    const container = document.getElementById('slide-container');
     const slide = slides[index];
-    slideContainer.innerHTML = `
+    container.innerHTML = `
       <h1>${slide.title}</h1>
       ${slide.content}
     `;
 
+    // Update tombol navigasi
     document.getElementById('prevBtn').disabled = index === 0;
-    document.getElementById('nextBtn').disabled = index === slides.length -1;
+    document.getElementById('nextBtn').disabled = index === slides.length - 1;
+
+    // Render ulang MathJax untuk konten baru
+    if (window.MathJax) {
+      MathJax.typesetPromise([container]).catch((err) => console.error(err.message));
+    }
   }
 
   function nextSlide() {
@@ -175,7 +256,7 @@
     }
   }
 
-  // Initialize
+  // Tampilkan slide pertama saat halaman dimuat
   showSlide(currentSlide);
 </script>
 
