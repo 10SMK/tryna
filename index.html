@@ -2,224 +2,137 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Persamaan Kuadrat - Aku Pintar</title>
-  <!-- MathJax for rendering math -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soal Pilihan Ganda Persamaan Kuadrat</title>
   <style>
     body {
-      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
-      background-color: #e6f7e6;
-      margin: 0;
-      padding: 20px;
-      color: #2c3e50;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #2a64d6;
-      user-select: none;
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #f9f9f9;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
-      font-weight: 700;
-      font-size: 2.8rem;
+      color: #004080;
+      margin-bottom: 2rem;
     }
-    h2 {
-      margin-top: 40px;
-      font-weight: 700;
-      font-size: 1.8rem;
-      border-left: 6px solid #8bc34a;
-      padding-left: 12px;
+    .soal-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
-    p {
+    .soal-text {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .pilihan {
+      margin-bottom: 0.8rem;
       font-size: 1.1rem;
-      margin-bottom: 1em;
     }
-    ul {
-      margin-left: 20px;
-      margin-bottom: 1em;
-    }
-    a {
-      color: #2a64d6;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    code {
-      background: #e0f2f1;
-      padding: 2px 6px;
+    button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
       border-radius: 5px;
-      font-family: Consolas, monospace;
-      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
     }
-    figure {
-      text-align: center;
-      margin: 30px 0;
+    button:hover {
+      background-color: #004080;
     }
-    figcaption {
-      font-size: 0.9rem;
-      color: #555;
+    .pembahasan {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #e6f0ff;
+      border-left: 5px solid #0077cc;
       font-style: italic;
-      margin-top: 6px;
-    }
-    blockquote {
-      border-left: 4px solid #8bc34a;
-      padding-left: 12px;
-      color: #33691e;
-      font-style: italic;
-      margin: 20px 0;
-    }
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      padding: 15px 0;
-      font-weight: 600;
-      color: #4a6a2a;
-      user-select: none;
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>Soal Pilihan Ganda Persamaan Kuadrat</h1>
 
-  <h1>Persamaan Kuadrat : Pengertian, Akar-akar, Rumus, serta Penerapannya</h1>
+  <div class="soal-container">
+    <div id="soal-text" class="soal-text"></div>
+    <form id="form-soal">
+      <!-- Pilihan jawaban akan di-generate di sini -->
+    </form>
+    <button id="btn-submit">Cek Jawaban</button>
+    <div id="pembahasan" class="pembahasan"></div>
+  </div>
 
-  <p>Halo, Sobat Pintar! Sobat Pintar sebelumnya sudah pernah belajar tentang persamaan kuadrat atau sistem persamaan kuadrat belum? Hmm, apa itu ya? Apa bedanya? Langsung simak, yuk!</p>
+  <script>
+    // Data soal dengan pilihan dan pembahasan
+    const soalData = {
+      soal: "Selesaikan persamaan kuadrat: x² - 5x + 6 = 0. Berapakah akar-akarnya?",
+      pilihan: [
+        { id: "a", text: "x = 1 dan x = 6" },
+        { id: "b", text: "x = 2 dan x = 3" },
+        { id: "c", text: "x = -2 dan x = -3" },
+        { id: "d", text: "x = 0 dan x = 5" }
+      ],
+      jawabanBenar: "b",
+      pembahasan: "Persamaan kuadrat x² - 5x + 6 = 0 dapat difaktorkan menjadi (x - 2)(x - 3) = 0, sehingga akar-akarnya adalah x = 2 dan x = 3."
+    };
 
-  <p>Persamaan kuadrat adalah sebuah persamaan polinomial (suku banyak) yang pangkat tertingginya 2 atau berorde 2. Salah satu contoh persamaan kuadrat seperti ini:</p>
+    const soalTextEl = document.getElementById("soal-text");
+    const formSoal = document.getElementById("form-soal");
+    const btnSubmit = document.getElementById("btn-submit");
+    const pembahasanEl = document.getElementById("pembahasan");
 
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ ax^2 + bx + c = 0 $$
-  </p>
+    // Tampilkan soal dan pilihan jawaban
+    function tampilkanSoal() {
+      soalTextEl.textContent = soalData.soal;
+      formSoal.innerHTML = ""; // kosongkan dulu
 
-  <p>Berbeda dengan persamaan linear yang pangkat tertingginya 1, pada persamaan kuadrat pangkat tertingginya adalah 2, maka disebut persamaan kuadrat.</p>
+      soalData.pilihan.forEach(pilihan => {
+        const label = document.createElement("label");
+        label.className = "pilihan";
+        label.htmlFor = pilihan.id;
 
-  <p>Lalu sistem persamaan kuadrat itu apa ya, Sobat? Yup, benar! Sistem berarti tidak hanya terdiri dari satu persamaan saja, sehingga sistem persamaan kuadrat adalah kumpulan dari beberapa persamaan kuadrat. Pada materi kali ini kita hanya akan membahas persamaan kuadrat saja, Sobat.</p>
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "jawaban";
+        radio.id = pilihan.id;
+        radio.value = pilihan.id;
 
-  <p>Oh iya, Sobat Pintar harus ingat kalau banyak membaca dan berlatih menjawab soal akan membuat kita semakin cepat memahami materi yang sedang kalian pelajari. Jadi, siapa nih yang sudah tidak sabar buat belajar persamaan kuadrat? Yuk, simak dulu penjelasannya di bawah ini!</p>
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(" " + pilihan.text));
 
-  <h2>Bentuk Umum Persamaan Kuadrat</h2>
-  <p>Bentuk umum dari persamaan kuadrat adalah:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ ax^2 + bx + c = 0 $$
-  </p>
-  <ul>
-    <li><b>a</b> adalah koefisien dari \( x^2 \)</li>
-    <li><b>b</b> adalah koefisien dari \( x \)</li>
-    <li><b>c</b> adalah konstanta</li>
-    <li><b>x</b> adalah variabel yang nilainya belum diketahui dan memenuhi persamaan kuadrat di atas.</li>
-  </ul>
+        formSoal.appendChild(label);
+        formSoal.appendChild(document.createElement("br"));
+      });
+    }
 
-  <h2>Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
-  <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ (x - x_1)(x - x_2) = 0 $$
-  </p>
+    // Cek jawaban dan tampilkan pembahasan
+    btnSubmit.addEventListener("click", () => {
+      const pilihanTerpilih = document.querySelector('input[name="jawaban"]:checked');
+      if (!pilihanTerpilih) {
+        alert("Silakan pilih jawaban terlebih dahulu!");
+        return;
+      }
 
-  <p>Contoh soal:</p>
-  <p><b>Tentukan persamaan kuadrat yang akar-akarnya 2 dan 3!</b></p>
-  <p><b>Pembahasan:</b></p>
-  <p>Persamaan kuadratnya adalah:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ (x - 2)(x - 3) = 0 $$
-  </p>
-  <p>Jika dikembangkan:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ x^2 - 5x + 6 = 0 $$
-  </p>
+      if (pilihanTerpilih.value === soalData.jawabanBenar) {
+        pembahasanEl.style.color = "#006600"; // hijau
+        pembahasanEl.textContent = "Jawaban benar! " + soalData.pembahasan;
+      } else {
+        pembahasanEl.style.color = "#cc0000"; // merah
+        pembahasanEl.textContent = "Jawaban salah. " + soalData.pembahasan;
+      }
+      pembahasanEl.style.display = "block";
+    });
 
-  <h2>Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar</h2>
-  <p>Jika yang diketahui pada soal hanya jumlah dan hasil kali akar-akarnya, Sobat Pintar bisa menggunakan rumus:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ x^2 - (x_1 + x_2)x + x_1 x_2 = 0 $$
-  </p>
-
-  <p>Contoh soal:</p>
-  <p><b>Tentukan persamaan kuadrat yang akar-akarnya jumlahnya 7 dan hasil kalinya 12!</b></p>
-  <p><b>Penyelesaian:</b></p>
-  <p>Persamaan kuadratnya:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ x^2 - 7x + 12 = 0 $$
-  </p>
-
-  <h2>Akar-akar Persamaan Kuadrat</h2>
-  <p>Solusi yang memenuhi persamaan kuadrat disebut akar-akar persamaan. Ada 3 cara utama menentukan akar-akar persamaan kuadrat:</p>
-  <ol>
-    <li><b>Faktorisasi:</b> Mengubah penjumlahan suku-suku aljabar menjadi bentuk perkalian.</li>
-    <li><b>Melengkapkan Kuadrat Sempurna:</b> Mengubah bentuk umum menjadi kuadrat sempurna.</li>
-    <li><b>Rumus Kuadrat:</b> Menggunakan rumus:
-      <br>
-      $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
-    </li>
-  </ol>
-
-  <h2>Contoh Soal Faktorisasi</h2>
-  <p><b>Soal:</b> Cari akar-akar persamaan kuadrat:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ x^2 + 4x - 12 = 0 $$
-  </p>
-  <p><b>Penyelesaian:</b></p>
-  <ul>
-    <li>Cari dua bilangan yang jika dikalikan hasilnya -12 dan dijumlahkan hasilnya 4, yaitu 6 dan -2.</li>
-    <li>Faktorkan:
-      <br>
-      $$ (x + 6)(x - 2) = 0 $$
-    </li>
-    <li>Maka akar-akarnya:
-      <br>
-      $$ x = -6 \quad \text{atau} \quad x = 2 $$
-    </li>
-  </ul>
-
-  <h2>Contoh Soal Melengkapkan Kuadrat Sempurna</h2>
-  <p><b>Soal:</b> Tentukan akar persamaan:</p>
-  <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
-    $$ x^2 + 6x + 5 = 0 $$
-  </p>
-  <p><b>Penyelesaian:</b></p>
-  <ol>
-    <li>Pindahkan konstanta:
-      <br>
-      $$ x^2 + 6x = -5 $$
-    </li>
-    <li>Tambahkan \( \left(\frac{6}{2}\right)^2 = 9 \) ke kedua ruas:
-      <br>
-      $$ x^2 + 6x + 9 = -5 + 9 $$
-      <br>
-      $$ (x + 3)^2 = 4 $$
-    </li>
-    <li>Ambil akar kedua ruas:
-      <br>
-      $$ x + 3 = \pm 2 $$
-      <br>
-      $$ x_1 = -3 + 2 = -1, \quad x_2 = -3 - 2 = -5 $$
-    </li>
-  </ol>
-
-  <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
-  <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
-
-  <figure>
-    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Pelangi" style="max-width:100%; border-radius:12px;" />
-    <figcaption>Pelangi yang merupakan lengkungan cahaya warna-warni (Photo by Ben Mack from Pexels)</figcaption>
-  </figure>
-
-  <figure>
-    <img src="https://www.wikihow.com/images_en/thumb/9/9e/Kick-a-Soccer-Ball-Step-6-Version-3.jpg/v4-460px-Kick-a-Soccer-Ball-Step-6-Version-3.jpg" alt="Tendangan Bola" style="max-width:100%; border-radius:12px;" />
-    <figcaption>Gerakan tendangan bola membentuk lintasan parabola (Photo by wikihow.com)</figcaption>
-  </figure>
-
-  <p>Selain materi Persamaan Kuadrat, Sobat Pintar juga bisa belajar materi lainnya melalui aplikasi Aku Pintar di fitur Belajar Pintar mata pelajaran Matematika. Sampai bertemu di pembahasan berikutnya, Sobat Pintar!</p>
-
-  <footer>
-    &copy; 2025 Aku Pintar
-  </footer>
-
+    // Inisialisasi soal saat halaman dimuat
+    tampilkanSoal();
+  </script>
 </body>
 </html>
