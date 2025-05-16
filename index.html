@@ -78,6 +78,56 @@
             <div class="nama">Lela Nur Safrida, S.Pd., M.Pd.</div>
             <div class="nip">NIP: 199205122022032009</div>
         </div>
+<title>Tombol Dinamis Saat Scroll</title>
+<style>
+  /* Styling tombol */
+  #dynamicButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1000;
+  }
+  #dynamicButton.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+</style>
+</head>
+<body>
+
+<button id="dynamicButton">Tombol Dinamis</button>
+
+<script>
+  let lastScrollTop = 0;
+  const button = document.getElementById('dynamicButton');
+
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Scroll ke bawah -> sembunyikan tombol
+      button.classList.add('hide');
+    } else {
+      // Scroll ke atas -> tampilkan tombol
+      button.classList.remove('hide');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Untuk menghindari nilai negatif
+  }, false);
+</script>
+
+</body>
+</html>
+
     </div>
 </body>
 </html>
