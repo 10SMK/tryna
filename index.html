@@ -1,133 +1,493 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profil Dosen</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .dosen-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
-        }
-        .dosen-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 260px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
-        .dosen-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-        .dosen-card img {
-            width: 140px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-        }
-        .nama {
-            font-weight: 700;
-            font-size: 1.1em;
-            color: #222;
-            margin-bottom: 8px;
-        }
-        .nip {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Profil Dosen</h1>
-    <div class="dosen-container">
-        <!-- Profil Edy Wihardjo -->
-        <div class="dosen-card">
-            <img src="foto_edy_wihardjo.jpg" alt="Foto Edy Wihardjo" />
-            <div class="nama">Edy Wihardjo, S.Pd., M.Pd., M.CE.</div>
-            <div class="nip">NIP: 197001081999031001</div>
-        </div>
-
-        <!-- Profil Dr. Erfan Yudianto -->
-        <div class="dosen-card">
-            <img src="pak erfan.png" alt="Foto Dr. Erfan Yudianto" />
-            <div class="nama">Dr. Erfan Yudianto, S.Pd., M.Pd.</div>
-            <div class="nip">NIP: 198503162015041001</div>
-        </div>
-
-        <!-- Profil Lela Nur Safrida -->
-        <div class="dosen-card">
-            <img src="foto_lela_nur_safrida.jpg" alt="Foto Lela Nur Safrida" />
-            <div class="nama">Lela Nur Safrida, S.Pd., M.Pd.</div>
-            <div class="nip">NIP: 199205122022032009</div>
-        </div>
-<title>Tombol Dinamis Saat Scroll</title>
-<style>
-  /* Styling tombol */
-  #dynamicButton {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    opacity: 1;
-    visibility: visible;
-    z-index: 1000;
-  }
-  #dynamicButton.hide {
-    opacity: 0;
-    visibility: hidden;
-  }
-</style>
-</head>
-<body>
-
-<button id="dynamicButton">Tombol Dinamis</button>
-
-<script>
-  let lastScrollTop = 0;
-  const button = document.getElementById('dynamicButton');
-
-  window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-      // Scroll ke bawah -> sembunyikan tombol
-      button.classList.add('hide');
-    } else {
-      // Scroll ke atas -> tampilkan tombol
-      button.classList.remove('hide');
+  <meta charset="UTF-8" />
+  <title>Persamaan Kuadrat</title>
+  <!-- Google Fonts: Noto Sans Thai (bukan latin) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- MathJax for rendering equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0 20px 60px 20px;
+      font-family: 'Noto Sans Thai', sans-serif;
+      background-color: #e6f7e6;
+      background-image:
+        radial-gradient(circle at 10% 20%, #a6d785 2px, transparent 3px),
+        radial-gradient(circle at 80% 40%, #8bc34a 3px, transparent 4px),
+        radial-gradient(circle at 50% 80%, #c5e1a5 2px, transparent 3px);
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Untuk menghindari nilai negatif
-  }, false);
-</script>
+    header {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding: 25px 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      margin-top: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #2a64d6;
+      text-shadow: 1px 1px 3px #a0c4ff;
+      user-select: none;
+    }
 
-</body>
-</html>
+    .btn-profile, .btn-LKPD {
+      background-color: #8bc34a;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(139,195,74,0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 18px;
+      margin-bottom: 5px;
+      display: inline-block;
+      margin-left: 8px;
+    }
+    .btn-profile:hover, .btn-LKPD:hover {
+      background-color: #7cb342;
+    }
 
+    main {
+      max-width: 900px;
+      background: #fffdf9;
+      border-radius: 0 0 20px 20px;
+      padding: 30px 40px 40px 40px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
+    }
+
+    section {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 50px;
+      padding: 20px 20px 20px 0;
+      background: #f9fff4;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(139,195,74,0.15);
+      position: relative;
+      gap: 18px;
+    }
+
+    .badge-img {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(139,195,74,0.25);
+      margin-right: 0;
+    }
+    .badge-img img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+
+    section > div.content {
+      flex-grow: 1;
+    }
+
+    h2 {
+      color: #558b2f;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.9rem;
+      user-select: none;
+    }
+
+    p, ul, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3a4a2a;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    code {
+      background: #e0f2f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      font-weight: 600;
+    }
+
+    .indent-block {
+      margin-left: 40px;
+      margin-bottom: 24px;
+      padding-left: 20px;
+      border-left: 4px solid #8bc34a;
+      background: #f8fff0;
+      border-radius: 8px;
+    }
+
+    details {
+      background: #dcedc8;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #33691e;
+    }
+
+    details summary {
+      font-weight: 700;
+      user-select: none;
+    }
+
+    a {
+      color: #558b2f;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: #8bc34a;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(139,195,74,0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #7cb342;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 1rem;
+      color: #4a6a2a;
+      margin-bottom: 20px;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      main {
+        padding: 20px;
+      }
+      section {
+        flex-direction: column;
+        padding-left: 0;
+        gap: 12px;
+      }
+      .badge-img {
+        margin: 0 0 12px 0;
+        width: 48px;
+        height: 48px;
+      }
+      .indent-block {
+        margin-left: 10px;
+        padding-left: 10px;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      button, .btn-profile, .btn-LKPD {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Tombol fixed dinamis */
+    #buttonContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 9999;
+    }
+    #buttonContainer.hide {
+      opacity: 0;
+      transform: translateY(100px);
+      pointer-events: none;
+    }
+    #buttonContainer button {
+      background-color: #2a64d6;
+      border: none;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(42,100,214,0.4);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #buttonContainer button:hover {
+      background-color: #1948a3;
+    }
+    @media (max-width: 600px) {
+      #buttonContainer {
+        flex-direction: row;
+        bottom: 10px;
+        right: 10px;
+      }
+      #buttonContainer button {
+        padding: 12px 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Persamaan Kuadrat</h1>
+    <button class="btn-profile" onclick="window.location.href='profile.html'">Lihat Profil</button>
+    <button class="btn-LKPD" onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+  </header>
+  <main>
+
+    <!-- Bagian materi yang hilang dikembalikan di bawah ini -->
+    <section>
+      <div class="badge-img" title="Pengertian">
+        <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
+      </div>
+      <div class="content">
+        <h2>Pengertian Persamaan Kuadrat</h2>
+        <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
+        <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
+          $$ ax^2 + bx + c = 0 $$
+        </p>
+        <ul>
+          <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan \( a \neq 0 \).</li>
+          <li><b>x</b> adalah variabel yang dicari nilainya.</li>
+        </ul>
+        <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+      </div>
+    </section>
+
+    <div class="indent-block">
+      <h2 style="margin-top:0;">Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
+      <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - x_1)(x - x_2) = 0 $$
+      </p>
+      <p>Contoh:</p>
+      <p>Tentukan persamaan kuadrat dengan akar-akar 2 dan 3:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - 2)(x - 3) = 0 $$
+      </p>
+      <p>Jika dikembangkan:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 5x + 6 = 0 $$
+      </p>
+
+      <h2>Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar</h2>
+      <p>Jika yang diketahui pada soal hanya jumlah dan hasil kali akar-akarnya, Sobat Pintar bisa menggunakan rumus:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - (x_1 + x_2)x + x_1 x_2 = 0 $$
+      </p>
+      <p>Contoh soal:</p>
+      <p><b>Tentukan persamaan kuadrat yang akar-akarnya jumlahnya 7 dan hasil kalinya 12!</b></p>
+      <p><b>Penyelesaian:</b></p>
+      <p>Persamaan kuadratnya:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 7x + 12 = 0 $$
+      </p>
     </div>
+    <!-- Sampai sini bagian materi sebelum latihan soal -->
+
+    <!-- Latihan Soal Dinamis, badge tampil rapi -->
+    <section>
+      <div class="badge-img" title="Latihan Soal Dinamis">
+        <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+      </div>
+      <div class="content">
+        <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
+        <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
+        <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height:90px; user-select:none; margin-bottom:15px;"></div>
+        <form id="pilihan-jawaban" style="margin-top:10px;"></form>
+        <details style="margin-top:10px;">
+          <summary>Penjelasan Jawaban</summary>
+          <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
+        </details>
+        <button type="button" onclick="gantiSoal()">Soal Lainnya</button>
+      </div>
+    </section>
+    <script>
+      const daftarSoal = [
+        {
+          soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 2 dan x = 3",
+            "x = -2 dan x = -3",
+            "x = 1 dan x = 6",
+            "x = -1 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Persamaan x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3) = 0, sehingga x = 2 atau x = 3."
+        },
+        {
+          soal: "Akar-akar dari persamaan x² + 4x + 3 = 0 adalah ...",
+          pilihan: [
+            "x = -1 dan x = -3",
+            "x = 1 dan x = 3",
+            "x = -4 dan x = -3",
+            "x = 4 dan x = 3"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
+        },
+        {
+          soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 3 dan x = 4",
+            "x = -3 dan x = -4",
+            "x = 2 dan x = 6",
+            "x = -2 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
+        }
+      ];
+
+      let indeksSoal = 0;
+
+      function tampilkanSoal() {
+        const soalObj = daftarSoal[indeksSoal];
+        document.getElementById("soal-dinamis").innerText = soalObj.soal;
+
+        const formPilihan = document.getElementById("pilihan-jawaban");
+        formPilihan.innerHTML = "";
+
+        soalObj.pilihan.forEach((pilihan, idx) => {
+          const label = document.createElement("label");
+          label.style.display = "block";
+          label.style.marginBottom = "6px";
+          label.style.cursor = "pointer";
+          label.innerHTML = `
+            <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;" /> ${pilihan}
+          `;
+          formPilihan.appendChild(label);
+        });
+
+        // Reset penjelasan
+        document.getElementById("jawaban-dinamis").innerText = "";
+
+        // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
+        const radios = document.getElementsByName("jawaban");
+        radios.forEach(radio => {
+          radio.addEventListener("change", function() {
+            const jawabanDipilih = parseInt(this.value);
+            let hasil = "";
+            if (jawabanDipilih === soalObj.jawabanBenar) {
+              hasil = "✅ Jawaban Anda benar!";
+            } else {
+              hasil = "❌ Jawaban Anda kurang tepat.";
+            }
+            document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
+
+            // Buka details otomatis
+            const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
+            if (!details.open) {
+              details.open = true;
+            }
+          });
+        });
+      }
+
+      function gantiSoal() {
+        indeksSoal = (indeksSoal + 1) % daftarSoal.length;
+        tampilkanSoal();
+      }
+
+      // Tampilkan soal pertama saat halaman dimuat
+      tampilkanSoal();
+    </script>
+
+    <section>
+      <div class="badge-img" title="E-Book">
+        <img src="https://img.icons8.com/fluency/48/000000/ebook.png" alt="E-Book Badge" />
+      </div>
+      <div class="content">
+        <h2>E-Book tentang Persamaan Kuadrat</h2>
+        <p>
+          Anda dapat membaca e-book interaktif pada link berikut:<br>
+          <a href="https://read.bookcreator.com/gmMw3KPcHwV3kZRbPssV4YL4pH13/h3QEMQljSSW0JxVl5ql7hw" target="_blank" rel="noopener noreferrer">
+            📖 Baca E-Book Interaktif Persamaan Kuadrat
+          </a>
+        </p>
+      </div>
+    </section>
+    <!-- ... Bagian lain tetap ... -->
+  </main>
+
+  <!-- Tombol dinamis di pojok kanan bawah -->
+  <div id="buttonContainer">
+    <button onclick="window.location.href='profile.html'">Lihat Profil</button>
+    <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+  </div>
+  <footer>
+    &copy; 2025 10 SMK
+  </footer>
+  <script>
+    // Tombol dinamis: sembunyikan saat scroll ke bawah, tampilkan saat scroll ke atas
+    let lastScrollTop = 0;
+    const buttonContainer = document.getElementById('buttonContainer');
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // Scroll ke bawah, sembunyikan tombol
+        buttonContainer.classList.add('hide');
+      } else {
+        // Scroll ke atas, tampilkan tombol
+        buttonContainer.classList.remove('hide');
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+  </script>
 </body>
 </html>
